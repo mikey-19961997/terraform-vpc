@@ -1,25 +1,18 @@
-resource "aws_vpc" "myvpc" {
-    count = length(var.vpc_details.Name)
-    cidr_block = var.vpc_details.cidr_block[count.index]
-    tags = {
-        Name = var.vpc_details.Name[count.index]
-    }
-}
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
 
-resource "aws_subnet" "subnets" {
-    count = length(var.subnet_details.Name)
-    vpc_id = aws_vpc.myvpc[0].id
-    cidr_block = cidrsubnet(var.vpc_details.cidr_block[0],8,count.index)
-    tags = {
-        Name = var.subnet_details.Name[count.index]
-    }
-}
+  name = var.vpc_details.Name
+  cidr = var.vpc_details.cidr_block
 
-resource "aws_subnet" "subnets2" {
-    count = length(var.subnet_details1.Name)
-    vpc_id = aws_vpc.myvpc[1].id
-    cidr_block = cidrsubnet(var.vpc_details.cidr_block[1],8,count.index)
-    tags = {
-        Name = var.subnet_details1.Name[count.index]
-    }
+  azs             = var.subnet_details.azs
+  private_subnets = var.subnet_details.private_subnets
+  public_subnets  = var.subnet_details.public_subnets
+
+  enable_nat_gateway = false
+  enable_vpn_gateway = false
+
+  tags = {
+    Terraform = "true"
+    Environment = "dev"
+  }
 }

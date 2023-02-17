@@ -1,10 +1,13 @@
+region = "us-east-1"
 vpc_details = {
-    Name = ["mikey1","mikey2"]
-    cidr_block = ["192.168.0.0/16","10.0.0.0/16"]
+    Name = "mikey1"
+    cidr_block = "192.168.0.0/16"
 }
 
 subnet_details = {
-    Name = ["m1","m2","m3","m4"]
+    azs = ["us-east-1a","us-east-1b"]
+    private_subnets = ["192.168.0.0/24","192.168.1.0/24","192.168.2.0/24","192.168.3.0/24"]
+    public_subnets = ["192.168.4.0/24,192.168.5.0/24"]
 }
 
 subnet_details1 = {
