@@ -5,7 +5,7 @@ resource "aws_db_instance" "mydb" {
   engine_version       = "5.7"
   instance_class       = "db.t3.micro"
   username             = "root"
-  password             = "root"
+  password             = "rootroot"
   skip_final_snapshot  = true
   depends_on = [
     module.vpc,aws_db_subnet_group.dbsubnetgroup
