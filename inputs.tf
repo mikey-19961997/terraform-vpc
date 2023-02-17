@@ -15,9 +15,3 @@ variable "subnet_details" {
         public_subnets = list(string)
     })
 }
-
-variable "subnet_details1" {
-    type = object({
-        Name = list(string)
-    })
-}
