@@ -3,8 +3,8 @@ variable "region" {
 }
 variable "vpc_details" {
     type = object({
-        cidr_block = list(string)
-        Name = list(string)
+        cidr_block = string
+        Name = string
     })
 }
 
