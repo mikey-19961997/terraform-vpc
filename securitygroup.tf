@@ -9,3 +9,4 @@ resource "aws_security_group" "my-sg" {
     protocol         = "tcp"
     cidr_blocks      = [var.vpc_details.cidr_block]
   }
+}
