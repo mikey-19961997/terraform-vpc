@@ -10,6 +10,6 @@ resource "aws_db_instance" "mydb" {
   depends_on = [
     module.vpc,aws_db_subnet_group.dbsubnetgroup
   ]
-  vpc_security_group_ids = aws_security_group.my-sg.id
+  vpc_security_group_ids = [aws_security_group.my-sg.id]
   db_subnet_group_name = aws_db_subnet_group.dbsubnetgroup.name
 }
